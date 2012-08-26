@@ -25,14 +25,18 @@ public class PaymentServiceTest {
 				.mock(GenericCreditCardService.class);
 		Purchase p = BillingCalculator.calculateTotalPurchase(customer,
 				"EL-001,FU-002");
+		PaymentService a = Mockito.mock(PaymentService.class);
 
 		// Mocking external service behavior
-		Mockito.when(creditCardService.pay("xxxx111xxxx", p.getTotalPrice())).thenReturn(true);
+		Mockito.when(creditCardService.pay("xxxx111xxxx", p.getTotalPrice()))
+				.thenReturn(true);
+		Mockito.when(a.ivaCalculate()).thenReturn(1000);
 
-		Assert.assertTrue(creditCardService.pay("xxxx111xxxx", p.getTotalPrice()));
+		Assert.assertEquals(1000, a.ivaCalculate());
+		
+		Assert.assertTrue(creditCardService.pay("xxxx111xxxx",
+				p.getTotalPrice()));
 
 	}
 
 }
-
-

@@ -22,4 +22,10 @@ public class PaymentService {
 		return true;
 	}
 
+	public int ivaCalculate() {
+		// Method Code
+		int iva = 1000;
+		return iva;
+	}
+
 }
