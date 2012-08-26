@@ -7,7 +7,7 @@ import co.edu.eafit.carritocompras.data.util.ChangeStatusException;
 
 public class PaymentService {
 
-	public void pay(Customer customer, Purchase purchase,
+	public boolean pay(Customer customer, Purchase purchase,
 			String creditCardNumnber, GenericCreditCardService creditCardService) {
 		try {
 			if (creditCardService.pay(creditCardNumnber,
@@ -19,6 +19,7 @@ public class PaymentService {
 		} catch (ChangeStatusException e) {
 			purchase.markAsReview();
 		}
+		return true;
 	}
 
 }
