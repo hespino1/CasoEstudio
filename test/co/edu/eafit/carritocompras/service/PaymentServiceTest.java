@@ -45,6 +45,7 @@ public class PaymentServiceTest {
 		
 		//Test for pointsCalculate
         Mockito.when(b.pointsCalculate()).thenReturn(200);
+        Assert.assertEquals(200, b.pointsCalculate());
         
     }
 
